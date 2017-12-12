@@ -124,7 +124,7 @@ class FormBuilderBlockService extends BaseBlockService
 
         $form = $form_pack['form'];
         $success = false;
-        $request = $this->container->get('request');
+        $request = $this->container->get('request_stack')->getCurrentRequest();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
