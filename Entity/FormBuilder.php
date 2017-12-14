@@ -3,6 +3,7 @@
 namespace Pirastru\FormBuilderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * Form Builder Entity.
@@ -83,6 +84,11 @@ class FormBuilder
      * @ORM\Column(name="reply_to", type="string", length=255)
      */
     private $replyTo;
+
+    /**
+    * @OneToMany(targetEntity="SubmittedForm", mappedBy="form")
+    */
+    private $submittedForms;
 
     /**
      * Get id.
@@ -251,5 +257,39 @@ class FormBuilder
     public function setReplyTo($replyTo)
     {
         $this->replyTo = $replyTo;
+    }
+
+    /**
+     * Add submittedForm
+     *
+     * @param \Pirastru\FormBuilderBundle\Entity\SubmittedForm $formField
+     *
+     * @return FormBuilder
+     */
+    public function addSubmittedForm(\Pirastru\FormBuilderBundle\Entity\SubmittedForm $submittedForm)
+    {
+        $this->submittedForms[] = $submittedForm;
+
+        return $this;
+    }
+
+    /**
+     * Remove submittedForm
+     *
+     * @param \Pirastru\FormBuilderBundle\Entity\SubmittedForm $formField
+     */
+    public function removeSubmittedForm(\Pirastru\FormBuilderBundle\Entity\SubmittedForm $submittedForm)
+    {
+        $this->submittedForms->removeElement($submittedForm);
+    }
+
+    /**
+     * Get submittedForm
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubmittedForms()
+    {
+        return $this->submittedForms;
     }
 }

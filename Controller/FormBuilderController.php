@@ -2,16 +2,18 @@
 
 namespace Pirastru\FormBuilderBundle\Controller;
 
-use Pirastru\FormBuilderBundle\Event\MailEvent;
-use Pirastru\FormBuilderBundle\FormFactory\FormBuilderFactory;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Exporter\Writer\XlsWriter;
 use Exporter\Writer\CsvWriter;
-use Symfony\Component\HttpFoundation\StreamedResponse;
-use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
+use Symfony\Component\HttpFoundation\Request;
+use Pirastru\FormBuilderBundle\Event\MailEvent;
+use Pirastru\FormBuilderBundle\Entity\SubmittedForm;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Pirastru\FormBuilderBundle\Entity\SubmittedValue;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Pirastru\FormBuilderBundle\FormFactory\FormBuilderFactory;
+use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 
 /**
  * FormBuilder controller.
@@ -86,6 +88,20 @@ class FormBuilderController extends Controller
          *******************************/
         $submits = $formBuilder->getSubmit();
         $formBuilder->setColumns($columns);
+
+        $submittedForm = new SubmittedForm();
+        $submittedForm->setForm($formBuilder);
+        foreach($form_submit['form'] as $key => $value){
+            if($this->validKey($key)){
+                $submittedValue = new SubmittedValue();
+                $submittedValue->setFieldKey($key);
+                $submittedValue->setFieldValue($value);
+                $submittedForm->addSubmittedValue($submittedValue);
+            }
+        }
+        
+        $em->persist($submittedForm);
+        $em->flush();
 
         if ($this->getParameter('pirastru_form_builder.save_data')) {
             /* append the new submit on tail of the previous Submits JSON */
@@ -201,7 +217,7 @@ class FormBuilderController extends Controller
              */
             $field_fun = 'setField'.ucfirst($elem->typefield);
             if (method_exists($formBuilderFactory, $field_fun)) {
-                $field_detail = $formBuilderFactory->$field_fun($formBuilder, $key, $elem);
+                $field_detail = $formBuilderFactory->$field_fun($formBuilder, $elem->fields->id->value, $elem);
 
                 if (isset($elem->fields->label)) {
                     $title_col[$field_detail['name']] = $elem->fields->label->value;
@@ -294,6 +310,7 @@ class FormBuilderController extends Controller
 
     private function buildSingleContent($formBuilder, $form_submit)
     {
+
         $formArray = json_decode($formBuilder->getJson());
         $csvData = [
             'headers' => [],
@@ -304,29 +321,9 @@ class FormBuilderController extends Controller
             if (!$this->validKey($key)) {
                 continue;
             }
-
-            list($type, $position) = explode('_', $key);
-            switch ($type) {
-                case 'radio':
-                    $value = $formArray[$position]->fields->radios->value[$submittedValue];
-                    break;
-                case 'choice':
-                    $value = $this->formatMulti($submittedValue, $formArray[$position]);
-                    break;
-                case 'checkbox':
-                    $value = $this->formatMulti($submittedValue, $formArray[$position], 'checkboxes');
-                    break;
-                default:
-                    $value = $submittedValue;
-            }
-
-            $header = $formBuilder->getColumns()[$key];
-            if (isset($formArray[$position]->fields->key) && $formArray[$position]->fields->key->value != '') {
-                $header = $formArray[$position]->fields->key->value;
-            }
-
-            $csvData['headers'][] = $header;
-            $csvData['data'][] = $value;
+            
+            $csvData['headers'][] = $submittedValue;
+            $csvData['data'][] = $key;
         }
 
         return $csvData;

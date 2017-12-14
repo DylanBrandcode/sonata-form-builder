@@ -118,7 +118,6 @@ class FormBuilderBlockService extends BaseBlockService
         if ($formBuilder === null) {
             return $this->renderResponse($blockContext->getTemplate(), array(), $response);
         }
-
         $form_pack = $this->container->get('pirastru_form_builder.controller')
             ->generateFormFromFormBuilder($formBuilder);
 
@@ -135,10 +134,9 @@ class FormBuilderBlockService extends BaseBlockService
 
             $this->container->get('pirastru_form_builder.controller')
                 ->submitOperations($formBuilder, $form_pack['title_col']);
-
+                
             $success = true;
         }
-
         return $this->renderResponse($blockContext->getTemplate(), array(
             'formBuilderId' => $formBuilder->getId(),
             'block' => $blockContext->getBlock(),

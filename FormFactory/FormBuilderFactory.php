@@ -25,7 +25,7 @@ class FormBuilderFactory
      */
     public function setFieldEmailinput($formBuilder, $key, $elem)
     {
-        $formBuilder->add('email_'.$key, 'email', array(
+        $formBuilder->add($key, 'email', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'sonata_help' => $elem->fields->helptext->value,
@@ -37,7 +37,7 @@ class FormBuilderFactory
             ),
         ));
 
-        return array('name' => 'email_'.$key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
+        return array('name' =>$key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
     }
 
     /**
@@ -45,7 +45,7 @@ class FormBuilderFactory
      */
     public function setFieldDateinput($formBuilder, $key, $elem)
     {
-        $formBuilder->add('date_'.$key, 'text', array(
+        $formBuilder->add($key, 'text', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'sonata_help' => $elem->fields->helptext->value,
@@ -61,7 +61,7 @@ class FormBuilderFactory
             ),
         ));
 
-        return array('name' => 'date_'.$key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
+        return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
     }
 
     /**
@@ -69,7 +69,7 @@ class FormBuilderFactory
      */
     public function setFieldTelephoneinput($formBuilder, $key, $elem)
     {
-        $formBuilder->add('telephone_'.$key, 'number', array(
+        $formBuilder->add($key, 'number', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'sonata_help' => $elem->fields->helptext->value,
@@ -79,7 +79,7 @@ class FormBuilderFactory
             ),
         ));
 
-        return array('name' => 'telephone_'.$key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
+        return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
     }
 
     /**
@@ -87,7 +87,7 @@ class FormBuilderFactory
      */
     public function setFieldPostalcodeinput($formBuilder, $key, $elem)
     {
-        $formBuilder->add('postalcode_'.$key, 'number', array(
+        $formBuilder->add($key, 'number', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'sonata_help' => $elem->fields->helptext->value,
@@ -97,7 +97,7 @@ class FormBuilderFactory
             ),
         ));
 
-        return array('name' => 'postalcode_'.$key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
+        return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
     }
 
     /**
@@ -105,7 +105,7 @@ class FormBuilderFactory
      */
     public function setFieldTextinput($formBuilder, $key, $elem)
     {
-        $formBuilder->add('text_'.$key, 'text', array(
+        $formBuilder->add($key, 'text', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'sonata_help' => $elem->fields->helptext->value,
@@ -114,7 +114,7 @@ class FormBuilderFactory
             ),
         ));
 
-        return array('name' => 'text_'.$key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
+        return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
     }
 
     /**
@@ -122,7 +122,7 @@ class FormBuilderFactory
      */
     public function setFieldTextarea($formBuilder, $key, $elem)
     {
-        $formBuilder->add('textarea_'.$key, 'textarea', array(
+        $formBuilder->add($key, 'textarea', array(
             'required' => false,
             'label' => $elem->fields->label->value,
             'sonata_help' => $elem->fields->helptext->value,
@@ -131,7 +131,7 @@ class FormBuilderFactory
             ),
         ));
 
-        return array('name' => 'textarea_'.$key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
+        return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
     }
 
     /**
@@ -139,14 +139,14 @@ class FormBuilderFactory
      */
     public function setFieldSelectbasic($formBuilder, $key, $elem)
     {
-        $formBuilder->add('choice_'.$key, 'choice', array(
+        $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'choices' => $elem->fields->options->value,
             'required' => false,
             'empty_value' => false,
         ));
 
-        return array('name' => 'choice_'.$key, 'size' => $this->getSelectedValue($elem->fields->inputsize->value));
+        return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputsize->value));
     }
 
     /**
@@ -154,14 +154,14 @@ class FormBuilderFactory
      */
     public function setFieldSelectmultiple($formBuilder, $key, $elem)
     {
-        $formBuilder->add('choice_'.$key, 'choice', array(
+        $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'choices' => $elem->fields->options->value,
             'multiple' => true,
             'required' => false,
         ));
 
-        return array('name' => 'choice_'.$key, 'size' => $this->getSelectedValue($elem->fields->inputsize->value));
+        return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputsize->value));
     }
 
     /**
@@ -169,7 +169,7 @@ class FormBuilderFactory
      */
     public function setFieldMultipleradios($formBuilder, $key, $elem)
     {
-        $formBuilder->add('radio_'.$key, 'choice', array(
+        $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'choices' => $elem->fields->radios->value,
             'multiple' => false,
@@ -178,7 +178,7 @@ class FormBuilderFactory
             'expanded' => true,
         ));
 
-        return array('name' => 'radio_'.$key, 'size' => 'col-sm-6');
+        return array('name' => $key, 'size' => 'col-sm-6');
     }
 
     /**
@@ -186,7 +186,7 @@ class FormBuilderFactory
      */
     public function setFieldMultiplecheckboxes($formBuilder, $key, $elem)
     {
-        $formBuilder->add('checkbox_'.$key, 'choice', array(
+        $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'choices' => $elem->fields->checkboxes->value,
             'multiple' => true,
@@ -194,7 +194,7 @@ class FormBuilderFactory
             'required' => false,
         ));
 
-        return array('name' => 'checkbox_'.$key, 'size' => 'col-sm-6');
+        return array('name' => $key, 'size' => 'col-sm-6');
     }
 
     public function setFieldPrivacycheckbox($formBuilder, $key, $elem)
@@ -205,7 +205,7 @@ class FormBuilderFactory
             $elem->fields->cta->value
         );
 
-        $formBuilder->add('privacy_'.$key, CheckboxType::class, [
+        $formBuilder->add($key, CheckboxType::class, [
             'label' => $label,
             'required' => true,
             'label_attr' => [
@@ -216,7 +216,7 @@ class FormBuilderFactory
             ),
         ]);
 
-        return array('name' => 'privacy_'.$key, 'size' => 'col-sm-6');
+        return array('name' => $key, 'size' => 'col-sm-6');
     }
 
     /**
@@ -238,7 +238,7 @@ class FormBuilderFactory
         $action = $this->getSelectedValue($elem->fields->buttonaction->value);
         $this->createButton($formBuilder, $action, $key, $elem->fields->buttonlabel->value);
 
-        return array('name' => 'button_'.$key, 'size' => 'col-sm-6');
+        return array('name' => $key, 'size' => 'col-sm-6');
     }
 
     public function setFieldDoublebutton($formBuilder, $key, $elem)
