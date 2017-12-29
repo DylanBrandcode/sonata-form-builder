@@ -28,6 +28,7 @@ class FormBuilderFactory
         $formBuilder->add($key, 'email', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
             'attr' => array(
                 'placeholder' => $elem->fields->placeholder->value,
@@ -48,6 +49,7 @@ class FormBuilderFactory
         $formBuilder->add($key, 'text', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
             'attr' => array(
                 'class' => 'date js-datepicker',
@@ -72,6 +74,7 @@ class FormBuilderFactory
         $formBuilder->add($key, 'number', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
             'attr' => array(
                 'class' => 'telephone ',
@@ -90,6 +93,7 @@ class FormBuilderFactory
         $formBuilder->add($key, 'number', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
             'attr' => array(
                 'class' => 'postalcode ',
@@ -108,10 +112,12 @@ class FormBuilderFactory
         $formBuilder->add($key, 'text', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
             'attr' => array(
                 'placeholder' => $elem->fields->placeholder->value,
             ),
+            
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
@@ -125,6 +131,7 @@ class FormBuilderFactory
         $formBuilder->add($key, 'textarea', array(
             'required' => false,
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
             'attr' => array(
                 'placeholder' => $elem->fields->textarea->value,
@@ -141,6 +148,7 @@ class FormBuilderFactory
     {
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'choices' => $elem->fields->options->value,
             'required' => false,
             'empty_value' => false,
@@ -156,6 +164,7 @@ class FormBuilderFactory
     {
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'choices' => $elem->fields->options->value,
             'multiple' => true,
             'required' => false,
@@ -171,6 +180,7 @@ class FormBuilderFactory
     {
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'choices' => $elem->fields->radios->value,
             'multiple' => false,
             'empty_value' => false,
@@ -188,6 +198,7 @@ class FormBuilderFactory
     {
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
+            'label_attr' => array('class' => 'indent'),
             'choices' => $elem->fields->checkboxes->value,
             'multiple' => true,
             'expanded' => true,
@@ -236,7 +247,7 @@ class FormBuilderFactory
     public function setFieldSinglebutton($formBuilder, $key, $elem)
     {
         $action = $this->getSelectedValue($elem->fields->buttonaction->value);
-        $this->createButton($formBuilder, $action, $key, $elem->fields->buttonlabel->value);
+        $this->createButton($formBuilder, $action, $key, $elem->fields->buttonlabel->value, $elem->fields->class->value);
 
         return array('name' => $key, 'size' => 'col-sm-6');
     }
@@ -254,12 +265,15 @@ class FormBuilderFactory
         );
     }
 
-    private function createButton($formBuilder, $action, $key, $value)
+    private function createButton($formBuilder, $action, $key, $value, $class="")
     {
         $buttonType = $this->getButtonType($action);
 
         $formBuilder->add('button_'.$key, $buttonType, array(
             'label' => $value,
+            'attr' => array(
+                'class' => $class,
+            ),
         ));
     }
 

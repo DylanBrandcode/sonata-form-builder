@@ -12,8 +12,8 @@ use Pirastru\FormBuilderBundle\Entity\SubmittedValue;
  * @ORM\Table(name="form__builder_submitted")
  * @ORM\HasLifecycleCallbacks()
  */
-class SubmittedForm{
-
+class SubmittedForm implements SubmittedFormInterface
+{
     /**
     * @ORM\Column(name="id", type="integer")
     * @ORM\Id
@@ -27,12 +27,12 @@ class SubmittedForm{
     private $createdAt;
     
     /**
-    * @OneToMany(targetEntity="SubmittedValue", mappedBy="submittedForm", cascade={"persist"}, fetch="EAGER")
+    * @OneToMany(targetEntity="SubmittedValue", mappedBy="SubmittedFormInterface", cascade={"persist"}, fetch="EAGER")
     */
     private $submittedValues;
 
     /**
-    * @ManyToOne(targetEntity="FormBuilder")
+    * @ManyToOne(targetEntity="FormInterface", cascade={"persist"})
     */
     private $form;
 
@@ -115,11 +115,11 @@ class SubmittedForm{
     /**
      * Set form
      *
-     * @param \Pirastru\FormBuilderBundle\Entity\FormBuilder $form
+     * @param \Pirastru\FormBuilderBundle\Entity\FormInterface $form
      *
      * @return SubmittedForm
      */
-    public function setForm(\Pirastru\FormBuilderBundle\Entity\FormBuilder $form = null)
+    public function setForm(\Pirastru\FormBuilderBundle\Entity\FormInterface $form = null)
     {
         $this->form = $form;
 
@@ -129,7 +129,7 @@ class SubmittedForm{
     /**
      * Get form
      *
-     * @return \Pirastru\FormBuilderBundle\Entity\FormBuilder
+     * @return \Pirastru\FormBuilderBundle\Entity\FormInterface
      */
     public function getForm()
     {

@@ -8,6 +8,11 @@
         "type": "input",
         "value": "singlebutton"
       },
+      "class": {
+          "type": "input",
+          "label": "Label Class",
+          "value": "classes"
+      },            
       "label": {
         "label": "Label Text",
         "type": "input",

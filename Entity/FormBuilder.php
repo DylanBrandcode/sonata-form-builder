@@ -4,6 +4,7 @@ namespace Pirastru\FormBuilderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
+use Pirastru\FormBuilderBundle\Entity\AbstractForm;
 
 /**
  * Form Builder Entity.
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping\OneToMany;
  * @ORM\Table(name="form__builder")
  * @ORM\Entity(repositoryClass="Pirastru\FormBuilderBundle\Entity\FormBuilderRepository")
  */
-class FormBuilder
+class FormBuilder implements FormInterface
 {
     /**
      * @var int
@@ -20,75 +21,75 @@ class FormBuilder
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var json
      *
      * @ORM\Column(name="json", type="json")
      */
-    private $json;
+    protected $json;
 
     /**
      * @var array
      *
      * @ORM\Column(name="columns", type="array", nullable=true)
      */
-    private $columns;
+    protected $columns;
 
     /**
      * @var array
      *
      * @ORM\Column(name="recipient", type="array")
      */
-    private $recipient;
+    protected $recipient;
 
     /**
      * @var array
      *
      * @ORM\Column(name="recipientcc", type="array")
      */
-    private $recipientCC;
+    protected $recipientCC;
 
     /**
      * @var array
      *
      * @ORM\Column(name="recipientbcc", type="array")
      */
-    private $recipientBCC;
+    protected $recipientBCC;
 
     /**
      * @var array
      *
      * @ORM\Column(name="submit", type="array", nullable=true)
      */
-    private $submit;
+    protected $submit;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="subject", type="string", length=255)
      */
-    private $subject;
+    protected $subject;
 
     /**
      * @var string
      *
      * @ORM\Column(name="reply_to", type="string", length=255)
      */
-    private $replyTo;
+    protected $replyTo;
 
     /**
-    * @OneToMany(targetEntity="SubmittedForm", mappedBy="form")
+    * @OneToMany(targetEntity="SubmittedFormInterface", mappedBy="form")
     */
-    private $submittedForms;
+    protected $submittedForms;
 
     /**
      * Get id.
@@ -262,11 +263,11 @@ class FormBuilder
     /**
      * Add submittedForm
      *
-     * @param \Pirastru\FormBuilderBundle\Entity\SubmittedForm $formField
+     * @param \Pirastru\FormBuilderBundle\Entity\SubmittedFormInterface $formField
      *
      * @return FormBuilder
      */
-    public function addSubmittedForm(\Pirastru\FormBuilderBundle\Entity\SubmittedForm $submittedForm)
+    public function addSubmittedForm(\Pirastru\FormBuilderBundle\Entity\SubmittedFormInterface $submittedForm)
     {
         $this->submittedForms[] = $submittedForm;
 
@@ -276,9 +277,9 @@ class FormBuilder
     /**
      * Remove submittedForm
      *
-     * @param \Pirastru\FormBuilderBundle\Entity\SubmittedForm $formField
+     * @param \Pirastru\FormBuilderBundle\Entity\SubmittedFormInterface $formField
      */
-    public function removeSubmittedForm(\Pirastru\FormBuilderBundle\Entity\SubmittedForm $submittedForm)
+    public function removeSubmittedForm(\Pirastru\FormBuilderBundle\Entity\SubmittedFormInterface $submittedForm)
     {
         $this->submittedForms->removeElement($submittedForm);
     }

@@ -14,12 +14,17 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: Form, label: "%pirastru_form_builder.label%" }
 
+    pirastru_form_builder.submitted_form_admin:
+        class: Pirastru\FormBuilderBundle\Admin\SubmittedFormAdmin
+        arguments: [~, Pirastru\FormBuilderBundle\Entity\SubmittedForm, PirastruFormBuilderBundle:SubmittedFormAdmin, "@service_container"]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Form, label: "%pirastru_form_builder.label%" }            
+
     pirastru_form_builder.block:
         class: Pirastru\FormBuilderBundle\Block\FormBuilderBlockService
         arguments:
             - "pirastru_form_builder.block"
             - "@templating"
-            - "@service_container"
         tags:
             - {name: "sonata.block"}
 

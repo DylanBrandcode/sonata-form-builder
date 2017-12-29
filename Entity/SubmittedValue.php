@@ -29,7 +29,7 @@ class SubmittedValue{
     private $fieldValue;
 
     /**
-    * @ManyToOne(targetEntity="SubmittedForm")
+    * @ManyToOne(targetEntity="SubmittedFormInterface")
     */    
     private $submittedForm; 
 
@@ -93,11 +93,11 @@ class SubmittedValue{
     /**
      * Set submittedForm
      *
-     * @param \Pirastru\FormBuilderBundle\Entity\SubmittedForm $submittedForm
+     * @param \Pirastru\FormBuilderBundle\Entity\SubmittedFormInterface $submittedForm
      *
      * @return FormFieldValue
      */
-    public function setSubmittedForm(\Pirastru\FormBuilderBundle\Entity\SubmittedForm $submittedForm = null)
+    public function setSubmittedForm(\Pirastru\FormBuilderBundle\Entity\SubmittedFormInterface $submittedForm = null)
     {
         $this->submittedForm = $submittedForm;
 
@@ -107,7 +107,7 @@ class SubmittedValue{
     /**
      * Get submittedForm
      *
-     * @return \Pirastru\FormBuilderBundle\Entity\SubmittedForm
+     * @return \Pirastru\FormBuilderBundle\Entity\SubmittedFormInterface
      */
     public function getSubmittedForm()
     {

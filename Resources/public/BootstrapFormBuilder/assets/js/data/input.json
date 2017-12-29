@@ -1,6 +1,37 @@
 [
     {
         "fields": {
+            "inputwidth": {
+                "type": "select",
+                "label": "Input Width",
+                "value": [
+                    {
+                        "label": "Short",
+                        "value": "col-sm-4",
+                        "selected": false
+                    },
+                    {
+                        "label": "Medium",
+                        "value": "col-sm-6",
+                        "selected": true
+                    },
+                    {
+                        "label": "Long",
+                        "value": "col-sm-8",
+                        "selected": false
+                    }
+                ]
+            },
+            "id": {
+                "type": "input",
+                "label": "Label Id",
+                "value": "Text Input"
+            },
+            "class": {
+                "type": "input",
+                "label": "Label Class",
+                "value": "Text Input"
+            },            
             "label": {
                 "type": "input",
                 "label": "Label Text",
@@ -52,6 +83,11 @@
                         "selected": false
                     }
                 ]
+            },
+            "id": {
+                "type": "input",
+                "label": "Label Id",
+                "value": "Text Input"
             },
             "label": {
                 "type": "input",
@@ -105,6 +141,11 @@
                     }
                 ]
             },
+            "id": {
+                "type": "input",
+                "label": "Label Id",
+                "value": "Text Input"
+            },
             "label": {
                 "type": "input",
                 "label": "Label Text",
@@ -156,6 +197,11 @@
                         "selected": false
                     }
                 ]
+            },
+            "id": {
+                "type": "input",
+                "label": "Label Id",
+                "value": "Text Input"
             },
             "label": {
                 "type": "input",
@@ -209,6 +255,11 @@
                     }
                 ]
             },
+            "id": {
+                "type": "input",
+                "label": "Label Id",
+                "value": "Text Input"
+            },
             "label": {
                 "type": "input",
                 "label": "Label Text",
@@ -261,6 +312,11 @@
                     }
                 ]
             },
+            "id": {
+                "type": "input",
+                "label": "Label Id",
+                "value": "Text Input"
+            },
             "label": {
                 "type": "input",
                 "label": "Label Text",
@@ -287,6 +343,11 @@
     },
     {
         "fields": {
+            "id": {
+                "type": "input",
+                "label": "Label Id",
+                "value": "Text Input"
+            },
             "label": {
                 "type": "input",
                 "label": "Captcha Text",

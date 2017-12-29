@@ -3,6 +3,11 @@
     "title": "Multiple Radios",
     "typefield":"multipleradios",
     "fields": {
+      "id": {
+        "type": "input",
+        "label": "Label Id",
+        "value": "Text Input"
+      },
       "name": {
         "label": "Group Name",
         "type": "input",
@@ -32,6 +37,11 @@
     "title": "Multiple Checkboxes",
     "typefield":"multiplecheckboxes",
     "fields": {
+      "id": {
+        "type": "input",
+        "label": "Label Id",
+        "value": "Text Input"
+      },
       "name": {
         "label": "Group Name",
         "type": "input",
@@ -58,6 +68,11 @@
     "title": "Privacy check",
     "typefield":"privacycheckbox",
     "fields": {
+      "id": {
+        "type": "input",
+        "label": "Label Id",
+        "value": "Text Input"
+      },
       "text": {
         "label": "Privacy text",
         "type": "textarea",

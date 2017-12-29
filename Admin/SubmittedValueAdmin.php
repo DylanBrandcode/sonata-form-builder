@@ -12,7 +12,7 @@ class SubmittedValueAdmin extends AbstractAdmin
 {
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->clearExcept(array());
+        $collection->clearExcept(array('show'));
     }
     
     protected function configureFormFields(FormMapper $formMapper)

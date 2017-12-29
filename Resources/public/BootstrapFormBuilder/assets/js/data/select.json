@@ -3,6 +3,11 @@
     "title": "Select Basic",
     "typefield":"selectbasic",
     "fields": {
+      "id": {
+        "type": "input",
+        "label": "Label Id",
+        "value": "Text Input"
+      },
       "label": {
         "label": "Label Text",
         "type": "input",
@@ -63,6 +68,11 @@
     "title": "Select Multiple",
     "typefield":"selectmultiple",
     "fields": {
+      "id": {
+        "type": "input",
+        "label": "Label Id",
+        "value": "Text Input"
+      },
       "label": {
         "label": "Label Text",
         "type": "input",

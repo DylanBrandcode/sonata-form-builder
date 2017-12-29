@@ -8,6 +8,10 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript">
+        {# retrieve base path to use it in javascript#}
+        var pirastruformbuilder_base_path = '{{asset('')}}'.split('?')[0];
+    </script>
     <script data-main="{{ asset('bundles/pirastruformbuilder/BootstrapFormBuilder/assets/js/main.js') }}" src="{{ asset('bundles/pirastruformbuilder/BootstrapFormBuilder/assets/js/lib/require.js') }}"></script>
 
     <script type="text/javascript">
