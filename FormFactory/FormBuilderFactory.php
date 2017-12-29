@@ -219,9 +219,6 @@ class FormBuilderFactory
         $formBuilder->add($key, CheckboxType::class, [
             'label' => $label,
             'required' => true,
-            'label_attr' => [
-                'style' => 'display:none;',
-            ],
             'constraints' => array(
                 new EqualTo(['value' => 1])
             ),
