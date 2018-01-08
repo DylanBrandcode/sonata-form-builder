@@ -217,7 +217,7 @@ class FormBuilderController extends Controller
              */
             $field_fun = 'setField'.ucfirst($elem->typefield);
             if (method_exists($formBuilderFactory, $field_fun)) {
-                $field_detail = $formBuilderFactory->$field_fun($formBuilder, $elem->fields->id->value, $elem);
+                $field_detail = $formBuilderFactory->$field_fun($formBuilder, $elem->fields->name->value, $elem);
 
                 if (isset($elem->fields->label)) {
                     $title_col[$field_detail['name']] = $elem->fields->label->value;

@@ -4,53 +4,46 @@
             "inputwidth": {
                 "type": "select",
                 "label": "Input Width",
-                "value": [
-                    {
-                        "label": "Short",
-                        "value": "col-sm-4",
-                        "selected": false
-                    },
-                    {
-                        "label": "Medium",
-                        "value": "col-sm-6",
-                        "selected": true
-                    },
-                    {
-                        "label": "Long",
-                        "value": "col-sm-8",
-                        "selected": false
-                    }
-                ]
+                "value": [{
+                    "label": "Medium",
+                    "value": "col-sm-6",
+                    "selected": true
+                }]
             },
-            "id": {
-                "type": "input",
-                "label": "Label Id",
-                "value": "Text Input"
+            "name": { 
+			    "type": "input", 
+                "label": "Name/Id", 
+                "value": "" 
             },
             "class": {
                 "type": "input",
-                "label": "Label Class",
-                "value": "Text Input"
+                "label": "Class(es)",
+                "value": ""
             },            
             "label": {
                 "type": "input",
                 "label": "Label Text",
-                "value": "Text Input"
-            },
-            "key": {
+                "value": "Input Text"
+            },     
+            "label id": {
                 "type": "input",
-                "label": "Internal Key",
+                "label": "Label id",
                 "value": ""
             },
+            "label class": {
+                "type": "input",
+                "label": "Label class(es)",
+                "value": ""
+            },        
             "helptext": {
                 "type": "input",
                 "label": "Help Text",
-                "value": "help"
+                "value": ""
             },
             "placeholder": {
                 "type": "input",
                 "label": "Placeholder",
-                "value": "placeholder"
+                "value": ""
             },
             "required": {
                 "type": "checkbox",
@@ -66,48 +59,46 @@
             "inputwidth": {
                 "type": "select",
                 "label": "Input Width",
-                "value": [
-                    {
-                        "label": "Short",
-                        "value": "col-sm-4",
-                        "selected": false
-                    },
-                    {
-                        "label": "Medium",
-                        "value": "col-sm-6",
-                        "selected": true
-                    },
-                    {
-                        "label": "Long",
-                        "value": "col-sm-8",
-                        "selected": false
-                    }
-                ]
+                "value": [{
+                    "label": "Medium",
+                    "value": "col-sm-6",
+                    "selected": true
+                }]
             },
-            "id": {
+            "name": { 
+			    "type": "input", 
+                "label": "Name/Id", 
+                "value": "" 
+            },
+            "class": {
                 "type": "input",
-                "label": "Label Id",
-                "value": "Text Input"
-            },
+                "label": "Class(es)",
+                "value": ""
+            },            
             "label": {
                 "type": "input",
                 "label": "Label Text",
-                "value": "Adress Email"
-            },
-            "key": {
+                "value": "Input Email"
+            },     
+            "label id": {
                 "type": "input",
-                "label": "Internal Key",
+                "label": "Label id",
                 "value": ""
             },
+            "label class": {
+                "type": "input",
+                "label": "Label class(es)",
+                "value": ""
+            },        
             "helptext": {
                 "type": "input",
                 "label": "Help Text",
-                "value": "A valid Email adress"
+                "value": ""
             },
             "placeholder": {
                 "type": "input",
                 "label": "Placeholder",
-                "value": "exemple@exemple.com"
+                "value": ""
             },
             "required": {
                 "type": "checkbox",
@@ -118,53 +109,51 @@
         "title": "Email Input",
         "typefield": "emailinput"
     },
-    {
+    {        
         "fields": {
             "inputwidth": {
                 "type": "select",
                 "label": "Input Width",
-                "value": [
-                    {
-                        "label": "Short",
-                        "value": "col-sm-4",
-                        "selected": false
-                    },
-                    {
-                        "label": "Medium",
-                        "value": "col-sm-6",
-                        "selected": true
-                    },
-                    {
-                        "label": "Long",
-                        "value": "col-sm-8",
-                        "selected": false
-                    }
-                ]
+                "value": [{
+                    "label": "Medium",
+                    "value": "col-sm-6",
+                    "selected": true
+                }]
             },
-            "id": {
+            "name": { 
+			    "type": "input", 
+                "label": "Name/Id", 
+                "value": "" 
+            },
+            "class": {
                 "type": "input",
-                "label": "Label Id",
-                "value": "Text Input"
-            },
+                "label": "Class(es)",
+                "value": ""
+            },            
             "label": {
                 "type": "input",
                 "label": "Label Text",
-                "value": "Phone number"
-            },
-            "key": {
+                "value": "Input Phone"
+            },     
+            "label id": {
                 "type": "input",
-                "label": "Internal Key",
+                "label": "Label id",
                 "value": ""
             },
+            "label class": {
+                "type": "input",
+                "label": "Label class(es)",
+                "value": ""
+            },        
             "helptext": {
                 "type": "input",
                 "label": "Help Text",
-                "value": "Type a valid telephone number"
+                "value": ""
             },
             "placeholder": {
                 "type": "input",
                 "label": "Placeholder",
-                "value": "0612345678"
+                "value": ""
             },
             "required": {
                 "type": "checkbox",
@@ -180,48 +169,46 @@
             "inputwidth": {
                 "type": "select",
                 "label": "Input Width",
-                "value": [
-                    {
-                        "label": "Short",
-                        "value": "col-sm-4",
-                        "selected": false
-                    },
-                    {
-                        "label": "Medium",
-                        "value": "col-sm-6",
-                        "selected": true
-                    },
-                    {
-                        "label": "Long",
-                        "value": "col-sm-8",
-                        "selected": false
-                    }
-                ]
+                "value": [{
+                    "label": "Medium",
+                    "value": "col-sm-6",
+                    "selected": true
+                }]
             },
-            "id": {
+            "name": { 
+			    "type": "input", 
+                "label": "Name/Id", 
+                "value": "" 
+            },
+            "class": {
                 "type": "input",
-                "label": "Label Id",
-                "value": "Text Input"
-            },
+                "label": "Class(es)",
+                "value": ""
+            },            
             "label": {
                 "type": "input",
                 "label": "Label Text",
-                "value": "Postal Code"
-            },
-            "key": {
+                "value": "Input Postal Code"
+            },     
+            "label id": {
                 "type": "input",
-                "label": "Internal Key",
+                "label": "Label id",
                 "value": ""
             },
+            "label class": {
+                "type": "input",
+                "label": "Label class(es)",
+                "value": ""
+            },        
             "helptext": {
                 "type": "input",
                 "label": "Help Text",
-                "value": "help"
+                "value": ""
             },
             "placeholder": {
                 "type": "input",
                 "label": "Placeholder",
-                "value": "13006"
+                "value": ""
             },
             "required": {
                 "type": "checkbox",
@@ -237,48 +224,46 @@
             "inputwidth": {
                 "type": "select",
                 "label": "Input Width",
-                "value": [
-                    {
-                        "label": "Short",
-                        "value": "col-sm-4",
-                        "selected": false
-                    },
-                    {
-                        "label": "Medium",
-                        "value": "col-sm-6",
-                        "selected": true
-                    },
-                    {
-                        "label": "Long",
-                        "value": "col-sm-8",
-                        "selected": false
-                    }
-                ]
+                "value": [{
+                    "label": "Medium",
+                    "value": "col-sm-6",
+                    "selected": true
+                }]
             },
-            "id": {
+            "name": { 
+			    "type": "input", 
+                "label": "Name/Id", 
+                "value": "" 
+            },
+            "class": {
                 "type": "input",
-                "label": "Label Id",
-                "value": "Text Input"
-            },
+                "label": "Class(es)",
+                "value": ""
+            },            
             "label": {
                 "type": "input",
                 "label": "Label Text",
-                "value": "Date select"
-            },
-            "key": {
+                "value": "Datepicker"
+            },     
+            "label id": {
                 "type": "input",
-                "label": "Internal Key",
+                "label": "Label id",
                 "value": ""
             },
+            "label class": {
+                "type": "input",
+                "label": "Label class(es)",
+                "value": ""
+            },        
             "helptext": {
                 "type": "input",
                 "label": "Help Text",
-                "value": "help"
+                "value": ""
             },
             "placeholder": {
                 "type": "input",
                 "label": "Placeholder",
-                "value": "jj/mm/aaaa"
+                "value": ""
             },
             "required": {
                 "type": "checkbox",
@@ -294,48 +279,51 @@
             "inputwidth": {
                 "type": "select",
                 "label": "Input Width",
-                "value": [
-                    {
-                        "label": "Short",
-                        "value": "col-sm-4",
-                        "selected": false
-                    },
-                    {
-                        "label": "Medium",
-                        "value": "col-sm-6",
-                        "selected": true
-                    },
-                    {
-                        "label": "Long",
-                        "value": "col-sm-8",
-                        "selected": false
-                    }
-                ]
+                "value": [{
+                    "label": "Medium",
+                    "value": "col-sm-6",
+                    "selected": true
+                }]
             },
-            "id": {
+            "name": { 
+			    "type": "input", 
+                "label": "Name/Id", 
+                "value": "" 
+            },
+            "class": {
                 "type": "input",
-                "label": "Label Id",
-                "value": "Text Input"
-            },
+                "label": "Class(es)",
+                "value": ""
+            },            
             "label": {
                 "type": "input",
                 "label": "Label Text",
                 "value": "Text Area"
-            },
-            "key": {
+            },     
+            "label id": {
                 "type": "input",
-                "label": "Internal Key",
+                "label": "Label id",
                 "value": ""
             },
+            "label class": {
+                "type": "input",
+                "label": "Label class(es)",
+                "value": ""
+            },        
             "helptext": {
                 "type": "input",
                 "label": "Help Text",
-                "value": "help"
+                "value": ""
             },
-            "textarea": {
-                "type": "textarea",
-                "label": "Starting Text",
-                "value": "default text"
+            "placeholder": {
+                "type": "input",
+                "label": "Placeholder",
+                "value": ""
+            },
+            "required": {
+                "type": "checkbox",
+                "label": "Required",
+                "value": false
             }
         },
         "title": "Text Area",
@@ -343,20 +331,54 @@
     },
     {
         "fields": {
-            "id": {
-                "type": "input",
-                "label": "Label Id",
-                "value": "Text Input"
+            "inputwidth": {
+                "type": "select",
+                "label": "Input Width",
+                "value": [{
+                    "label": "Medium",
+                    "value": "col-sm-6",
+                    "selected": true
+                }]
             },
+            "name": { 
+			    "type": "input", 
+                "label": "Name/Id", 
+                "value": "" 
+            },
+            "class": {
+                "type": "input",
+                "label": "Class(es)",
+                "value": ""
+            },            
             "label": {
                 "type": "input",
-                "label": "Captcha Text",
-                "value": "Captcha"
+                "label": "Label Text",
+                "value": "Input Phone"
+            },     
+            "label id": {
+                "type": "input",
+                "label": "Label id",
+                "value": ""
             },
+            "label class": {
+                "type": "input",
+                "label": "Label class(es)",
+                "value": ""
+            },        
             "helptext": {
                 "type": "input",
                 "label": "Help Text",
-                "value": "help"
+                "value": ""
+            },
+            "placeholder": {
+                "type": "input",
+                "label": "Placeholder",
+                "value": ""
+            },
+            "required": {
+                "type": "checkbox",
+                "label": "Required",
+                "value": false
             }
         },
         "title": "Captcha",

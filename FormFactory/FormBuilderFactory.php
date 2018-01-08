@@ -25,14 +25,16 @@ class FormBuilderFactory
      */
     public function setFieldEmailinput($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'email', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
-            'attr' => array(
-                'placeholder' => $elem->fields->placeholder->value,
-            ),
+            'attr' => array_filter($attr),
             'constraints' => array(
                 new Email(),
             ),
@@ -46,21 +48,16 @@ class FormBuilderFactory
      */
     public function setFieldDateinput($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'text', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
-            'attr' => array(
-                'class' => 'date js-datepicker',
-                'placeholder' => $elem->fields->placeholder->value,
-            ),
-            'constraints' => array(
-                new Regex([
-                    'pattern' =>  "/^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-[0-9]{4}$/",
-                    'message' => 'Invalid format: dd-mm-yyyy'
-                ]),
-            ),
+            'attr' => array_filter($attr)
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
@@ -71,15 +68,16 @@ class FormBuilderFactory
      */
     public function setFieldTelephoneinput($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'number', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
-            'attr' => array(
-                'class' => 'telephone ',
-                'placeholder' => $elem->fields->placeholder->value,
-            ),
+            'attr' => array_filter($attr),
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
@@ -90,15 +88,16 @@ class FormBuilderFactory
      */
     public function setFieldPostalcodeinput($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'number', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
-            'attr' => array(
-                'class' => 'postalcode ',
-                'placeholder' => $elem->fields->placeholder->value,
-            ),
+            'attr' => array_filter($attr),
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
@@ -109,15 +108,16 @@ class FormBuilderFactory
      */
     public function setFieldTextinput($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'text', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
-            'attr' => array(
-                'placeholder' => $elem->fields->placeholder->value,
-            ),
-            
+            'attr' => array_filter($attr),            
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
@@ -128,14 +128,16 @@ class FormBuilderFactory
      */
     public function setFieldTextarea($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'textarea', array(
             'required' => false,
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
-            'attr' => array(
-                'placeholder' => $elem->fields->textarea->value,
-            ),
+            'attr' => array_filter($attr),
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
@@ -146,12 +148,17 @@ class FormBuilderFactory
      */
     public function setFieldSelectbasic($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'choices' => $elem->fields->options->value,
             'required' => false,
             'empty_value' => false,
+            'attr' => array_filter($attr),
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputsize->value));
@@ -162,12 +169,17 @@ class FormBuilderFactory
      */
     public function setFieldSelectmultiple($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'choices' => $elem->fields->options->value,
             'multiple' => true,
             'required' => false,
+            'attr' => array_filter($attr),
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputsize->value));
@@ -178,6 +190,10 @@ class FormBuilderFactory
      */
     public function setFieldMultipleradios($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
@@ -186,6 +202,7 @@ class FormBuilderFactory
             'empty_value' => false,
             'required' => false,
             'expanded' => true,
+            'attr' => array_filter($attr),
         ));
 
         return array('name' => $key, 'size' => 'col-sm-6');
@@ -196,6 +213,10 @@ class FormBuilderFactory
      */
     public function setFieldMultiplecheckboxes($formBuilder, $key, $elem)
     {
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
@@ -203,6 +224,7 @@ class FormBuilderFactory
             'multiple' => true,
             'expanded' => true,
             'required' => false,
+            'attr' => array_filter($attr),
         ));
 
         return array('name' => $key, 'size' => 'col-sm-6');
@@ -216,12 +238,18 @@ class FormBuilderFactory
             $elem->fields->cta->value
         );
 
+        $attr = array(
+            'placeholder' => $elem->fields->placeholder->value, 
+            'class' => $elem->fields->class->value, 
+        );
+
         $formBuilder->add($key, CheckboxType::class, [
             'label' => $label,
             'required' => true,
             'constraints' => array(
                 new EqualTo(['value' => 1])
             ),
+            'attr' => array_filter($attr),
         ]);
 
         return array('name' => $key, 'size' => 'col-sm-6');
