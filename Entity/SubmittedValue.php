@@ -30,6 +30,7 @@ class SubmittedValue{
 
     /**
     * @ManyToOne(targetEntity="SubmittedFormInterface")
+    * @ORM\JoinColumn(name="submitted_form_id", referencedColumnName="id", onDelete="CASCADE")
     */    
     private $submittedForm; 
 

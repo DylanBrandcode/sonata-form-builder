@@ -8,15 +8,17 @@
 namespace Pirastru\FormBuilderBundle\FormFactory;
 
 use Gregwar\CaptchaBundle\Type\CaptchaType;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ResetType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\Date;
-use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\EqualTo;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\EqualTo;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class FormBuilderFactory
 {
@@ -26,8 +28,8 @@ class FormBuilderFactory
     public function setFieldEmailinput($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
         $formBuilder->add($key, 'email', array(
             'required' => $elem->fields->required->value,
@@ -49,15 +51,16 @@ class FormBuilderFactory
     public function setFieldDateinput($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
-        $formBuilder->add($key, 'text', array(
+        $formBuilder->add($key, 'date', array(
             'required' => $elem->fields->required->value,
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
-            'attr' => array_filter($attr)
+            'attr' => array_filter($attr),
+            'widget' => 'single_text'
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
@@ -69,8 +72,8 @@ class FormBuilderFactory
     public function setFieldTelephoneinput($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
         $formBuilder->add($key, 'number', array(
             'required' => $elem->fields->required->value,
@@ -89,8 +92,8 @@ class FormBuilderFactory
     public function setFieldPostalcodeinput($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
         $formBuilder->add($key, 'number', array(
             'required' => $elem->fields->required->value,
@@ -109,8 +112,8 @@ class FormBuilderFactory
     public function setFieldTextinput($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
         $formBuilder->add($key, 'text', array(
             'required' => $elem->fields->required->value,
@@ -129,8 +132,8 @@ class FormBuilderFactory
     public function setFieldTextarea($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
         $formBuilder->add($key, 'textarea', array(
             'required' => false,
@@ -149,15 +152,20 @@ class FormBuilderFactory
     public function setFieldSelectbasic($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
+        $choices = array();
+        foreach($elem->fields->options->value as $choice){
+            $choices[$choice] = $choice;
+        }
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
-            'choices' => $elem->fields->options->value,
+            'choices' => $choices,
             'required' => false,
-            'empty_value' => false,
+            'placeholder' => false,
+            //'empty_value' => false,
             'attr' => array_filter($attr),
         ));
 
@@ -170,8 +178,8 @@ class FormBuilderFactory
     public function setFieldSelectmultiple($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
@@ -190,17 +198,22 @@ class FormBuilderFactory
      */
     public function setFieldMultipleradios($formBuilder, $key, $elem)
     {
+
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""), 
         );
+        $values = array();
+        foreach($elem->fields->radios->value as $val){
+            $values[$val] = $val;
+        }
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
-            'choices' => $elem->fields->radios->value,
+            'choices' => $values,
             'multiple' => false,
-            'empty_value' => false,
-            'required' => false,
+            //'empty_value' => false,
+            'required' => true,
             'expanded' => true,
             'attr' => array_filter($attr),
         ));
@@ -214,8 +227,8 @@ class FormBuilderFactory
     public function setFieldMultiplecheckboxes($formBuilder, $key, $elem)
     {
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
@@ -239,8 +252,8 @@ class FormBuilderFactory
         );
 
         $attr = array(
-            'placeholder' => $elem->fields->placeholder->value, 
-            'class' => $elem->fields->class->value, 
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
 
         $formBuilder->add($key, CheckboxType::class, [

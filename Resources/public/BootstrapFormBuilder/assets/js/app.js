@@ -22,7 +22,7 @@ define([
   renderTab, jsonTab
 ){
   return {
-    initialize: function(){ 
+    initialize: function(){
     	new TabView({
     		title: "Input",
     		collection: new SnippetsCollection(JSON.parse(inputJSON)),

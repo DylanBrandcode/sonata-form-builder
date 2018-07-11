@@ -2,12 +2,28 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/pirastruformbuilder/BootstrapFormBuilder/assets/css/custom.css') }}" />
+    
 {% endblock %}
 
 
 {% block javascripts %}
     {{ parent() }}
+   
+{% endblock %}
+
+{% block sonata_javascript_config %}
+    {{ parent() }}
+     {#Turn off confirm exit if turned on since it fails with JS library#}
+    {% if sonata_admin.adminPool.getOption('confirm_exit') %}
+       
+    {% endif %}
+{% endblock %}
+
+{% block form %}
+<script>
+    window.SONATA_CONFIG = {CONFIRM_EXIT: false};
+</script>
+<link rel="stylesheet" href="{{ asset('bundles/pirastruformbuilder/BootstrapFormBuilder/assets/css/custom.css') }}" />
     <script type="text/javascript">
         {# retrieve base path to use it in javascript#}
         var pirastruformbuilder_base_path = '{{asset('')}}'.split('?')[0];
@@ -24,19 +40,6 @@
             } );
         });
     </script>
-{% endblock %}
-
-{% block sonata_javascript_config %}
-    {{ parent() }}
-     {#Turn off confirm exit if turned on since it fails with JS library#}
-    {% if sonata_admin.adminPool.getOption('confirm_exit') %}
-        <script>
-            window.SONATA_CONFIG = {CONFIRM_EXIT: false};
-        </script>
-    {% endif %}
-{% endblock %}
-
-{% block form %}
 
     <div class="box box-success">
         <div class="box-header">
@@ -50,7 +53,7 @@
                 <div class="col-md-6">
                     <div class="clearfix">
                         <div id="build">
-                            <form id="target" class="form-horizontal">
+                            <form id="target" class="form-horizontal form">
                                 <legend>Drag fields down here..</legend>
                             </form>
                         </div>

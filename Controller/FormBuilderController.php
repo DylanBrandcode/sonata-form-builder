@@ -2,14 +2,15 @@
 
 namespace Pirastru\FormBuilderBundle\Controller;
 
-use Exporter\Writer\XlsWriter;
 use Exporter\Writer\CsvWriter;
+use Exporter\Writer\XlsWriter;
 use Symfony\Component\HttpFoundation\Request;
 use Pirastru\FormBuilderBundle\Event\MailEvent;
 use Pirastru\FormBuilderBundle\Entity\SubmittedForm;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Pirastru\FormBuilderBundle\Entity\SubmittedValue;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Pirastru\FormBuilderBundle\FormFactory\FormBuilderFactory;
@@ -188,8 +189,9 @@ class FormBuilderController extends Controller
      * Translate a json_form object to a symfony form
      */
     public function generateFormFromFormBuilder($formbuild)
-    {
-        $formBuilder = $this->createFormBuilder(array(), array(
+    {     
+  
+        $formBuilder =  $this->createFormBuilder(array(), array(
             'action' => '#',
             'method' => 'POST',
             'attr' => array(
@@ -217,7 +219,12 @@ class FormBuilderController extends Controller
              */
             $field_fun = 'setField'.ucfirst($elem->typefield);
             if (method_exists($formBuilderFactory, $field_fun)) {
-                $field_detail = $formBuilderFactory->$field_fun($formBuilder, $elem->fields->name->value, $elem);
+                
+                $field_detail = $formBuilderFactory->$field_fun(
+                    $formBuilder, 
+                    (isset($elem->fields->name) ? str_replace(' ', '_', $elem->fields->name->value) : str_replace(' ', '_', $elem->fields->id->value)), 
+                    $elem
+                );
 
                 if (isset($elem->fields->label)) {
                     $title_col[$field_detail['name']] = $elem->fields->label->value;
