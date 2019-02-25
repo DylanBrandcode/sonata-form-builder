@@ -9,7 +9,7 @@
         "value": "Text Input"
       },
       "name": {
-        "label": "Group Name",
+        "label": "Group Name (Unique)",
         "type": "input",
         "value": "radios"
       },
@@ -43,7 +43,7 @@
         "value": "Text Input"
       },
       "name": {
-        "label": "Group Name",
+        "label": "Group Name (Unique)",
         "type": "input",
         "value": "checkboxes"
       },

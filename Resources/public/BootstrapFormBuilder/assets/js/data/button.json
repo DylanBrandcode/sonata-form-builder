@@ -6,7 +6,7 @@
 
       "name": { 
       "type": "input", 
-            "label": "Name/Id", 
+            "label": "*Name/Id",
             "value": "" 
         },
         "class": {
@@ -68,7 +68,7 @@
     "typefield":"doublebutton",
     "fields": {
       "id": {
-        "label": "Button 1 ID / Name",
+        "label": "*Button 1 ID / Name",
         "type": "input",
         "value": "button1id"
       },
@@ -140,7 +140,7 @@
         ]
       },
       "id2": {
-        "label": "Button 2 ID / Name",
+        "label": "*Button 2 ID / Name",
         "type": "input",
         "value": "button2id"
       },
