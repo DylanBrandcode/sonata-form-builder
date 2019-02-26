@@ -33,10 +33,10 @@ define([
         	collection: new SnippetsCollection(JSON.parse(radioJSON)),
       	});
       	
-      	// new TabView({
-        	// title: "Select",
-        	// collection: new SnippetsCollection(JSON.parse(selectJSON)),
-      	// });
+      	new TabView({
+        	title: "Select",
+        	collection: new SnippetsCollection(JSON.parse(selectJSON)),
+      	});
       	
       	new TabView({
         	title: "Buttons",
