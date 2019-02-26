@@ -5,7 +5,7 @@
     "fields": {
       "id": {
         "type": "input",
-        "label": "Name/Id",
+        "label": "*Name/Id",
         "value": "Text Input"
       },   
       "label": {
@@ -70,7 +70,7 @@
     "fields": {
       "id": {
         "type": "input",
-        "label": "Name/Id",
+        "label": "*Name/Id",
         "value": "Text Input"
       },  
       "label": {

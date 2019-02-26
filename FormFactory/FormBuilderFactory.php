@@ -155,14 +155,10 @@ class FormBuilderFactory
             'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
             'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
         );
-        $choices = array();
-        foreach($elem->fields->options->value as $choice){
-            $choices[$choice] = $choice;
-        }
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
-            'choices' => $choices,
+            'choices' => $this->getChoices($elem->fields->options->value),
             'required' => false,
             'placeholder' => false,
             //'empty_value' => false,
@@ -184,7 +180,7 @@ class FormBuilderFactory
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
-            'choices' => $elem->fields->options->value,
+            'choices' => $this->getChoices($elem->fields->options->value),
             'multiple' => true,
             'required' => false,
             'attr' => array_filter($attr),
@@ -198,19 +194,14 @@ class FormBuilderFactory
      */
     public function setFieldMultipleradios($formBuilder, $key, $elem)
     {
-
         $attr = array(
             'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
             'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""), 
         );
-        $values = array();
-        foreach($elem->fields->radios->value as $val){
-            $values[$val] = $val;
-        }
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
-            'choices' => $values,
+            'choices' => $this->getChoices($elem->fields->radios->value),
             'multiple' => false,
             //'empty_value' => false,
             'required' => true,
@@ -233,7 +224,7 @@ class FormBuilderFactory
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
             'label_attr' => array('class' => 'indent'),
-            'choices' => $elem->fields->checkboxes->value,
+            'choices' => $this->getChoices($elem->fields->checkboxes->value),
             'multiple' => true,
             'expanded' => true,
             'required' => false,
@@ -340,5 +331,13 @@ class FormBuilderFactory
         ));
 
         return array('name' => 'captcha_'.$key, 'size' => 'col-sm-6');
+    }
+
+    private function getChoices($choices) {
+        $fixedChoices = array();
+        foreach ($choices as $choice) {
+            $fixedChoices[$choice] = $choice;
+        }
+        return $fixedChoices;
     }
 }
