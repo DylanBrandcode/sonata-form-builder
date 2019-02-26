@@ -333,7 +333,7 @@ class FormBuilderFactory
         return array('name' => 'captcha_'.$key, 'size' => 'col-sm-6');
     }
 
-    private function getChoices($choices, $locale = 'nl') {
+    private function getChoices($choices) {
         $fixedChoices = array();
         foreach ($choices as $choice) {
             $fixedChoices[$choice] = $choice;
