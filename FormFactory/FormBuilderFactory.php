@@ -200,7 +200,7 @@ class FormBuilderFactory
         );
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
-            'label_attr' => array('class' => 'indent'),
+            'label_attr' => [''],
             'choices' => $this->getChoices($elem->fields->radios->value),
             'multiple' => false,
             //'empty_value' => false,
@@ -219,7 +219,31 @@ class FormBuilderFactory
     {
         $attr = array(
             'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
-            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),
+            'type' => 'multipleCheck',
+        );
+        $formBuilder->add($key, 'choice', array(
+            'label' => $elem->fields->label->value,
+            'label_attr' => [''],
+            'choices' => $this->getChoices($elem->fields->checkboxes->value),
+            'multiple' => true,
+            'expanded' => true,
+            'required' => false,
+            'attr' => array_filter($attr),
+        ));
+
+        return array('name' => $key, 'size' => 'col-sm-6');
+    }
+
+    /**
+     * Multiple Checkbox Inline Field.
+     */
+    public function setFieldMultiplecheckboxesInline($formBuilder, $key, $elem)
+    {
+        $attr = array(
+            'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""),
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),
+            'type' => 'multipleCheckInline',
         );
         $formBuilder->add($key, 'choice', array(
             'label' => $elem->fields->label->value,
@@ -244,7 +268,7 @@ class FormBuilderFactory
 
         $attr = array(
             'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
-            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
+            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),
         );
 
         $formBuilder->add($key, CheckboxType::class, [

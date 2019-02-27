@@ -65,6 +65,37 @@
     }
   },
   {
+    "title": "Multiple Checkboxes Inline",
+    "typefield":"multiplecheckboxesinline",
+    "fields": {
+      "id": {
+        "type": "input",
+        "label": "Label Id",
+        "value": "Text Input"
+      },
+      "name": {
+        "label": "Group Name (Unique)",
+        "type": "input",
+        "value": "checkboxes"
+      },
+      "label": {
+        "label": "Label Text",
+        "type": "input",
+        "value": "Multiple Checkboxes Inline"
+      },
+      "key": {
+        "type": "input",
+        "label": "Internal Key",
+        "value": ""
+      },
+      "checkboxes": {
+        "label": "Checkboxes",
+        "type": "textarea-split",
+        "value": ["Option one","Option two"]
+      }
+    }
+  },
+  {
     "title": "Privacy check",
     "typefield":"privacycheckbox",
     "fields": {
