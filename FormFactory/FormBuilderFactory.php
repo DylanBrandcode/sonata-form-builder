@@ -52,7 +52,7 @@ class FormBuilderFactory
     {
         $attr = array(
             'placeholder' => (isset($elem->fields->placeholder) ? $elem->fields->placeholder->value : ""), 
-            'class' => (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),  
+            'class' => 'datepicker ' . (isset($elem->fields->class) ? $elem->fields->placeholder->value : ""),
         );
         $formBuilder->add($key, 'date', array(
             'required' => $elem->fields->required->value,
@@ -60,7 +60,8 @@ class FormBuilderFactory
             'label_attr' => array('class' => 'indent'),
             'sonata_help' => $elem->fields->helptext->value,
             'attr' => array_filter($attr),
-            'widget' => 'single_text'
+            'widget' => 'single_text',
+            'format' => 'dd-MM-yyyy'
         ));
 
         return array('name' => $key, 'size' => $this->getSelectedValue($elem->fields->inputwidth->value));
