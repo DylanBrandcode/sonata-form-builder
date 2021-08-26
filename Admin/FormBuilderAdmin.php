@@ -8,7 +8,11 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\CoreBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class FormBuilderAdmin extends AbstractAdmin
 {
@@ -48,17 +52,17 @@ class FormBuilderAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('json', 'hidden')
-            ->add('name', 'text')
-            ->add('subject', 'text', [
+            ->add('json', HiddenType::class)
+            ->add('name', TextType::class)
+            ->add('subject', TextType::class, [
                 'sonata_help' => "You can use &lt;Internal Key&gt; to add variables to your subject. Example: This email is from &lt;Name&gt;"
             ])
-            ->add('reply_to', 'text',[
+            ->add('reply_to', TextType::class ,[
                 'sonata_help' => "You can use &lt;Internal Key&gt; to add variables to your reply to field. Example: &lt;Email&gt;",
                 'required' => false,
             ])
-            ->add('recipient', 'collection', array(
-                    'entry_type' => 'email',
+            ->add('recipient', CollectionType::class, array(
+                    'entry_type' => EmailType::class,
                     'label' => 'Recipient(s)',
                     'allow_add' => true,
                     'allow_delete' => true,
@@ -69,8 +73,8 @@ class FormBuilderAdmin extends AbstractAdmin
                     ),
                 )
             )
-            ->add('recipientCC', 'collection', array(
-                    'entry_type' => 'email',
+            ->add('recipientCC', CollectionType::class, array(
+                    'entry_type' => EmailType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'delete_empty' => true,
@@ -80,8 +84,8 @@ class FormBuilderAdmin extends AbstractAdmin
                     ),
                 )
             )
-            ->add('recipientBCC', 'collection', array(
-                    'entry_type' => 'email',
+            ->add('recipientBCC', CollectionType::class, array(
+                    'entry_type' => EmailType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
                     'delete_empty' => true,
